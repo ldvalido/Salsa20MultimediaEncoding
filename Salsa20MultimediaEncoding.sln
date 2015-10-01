@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Core", "Salsa20.Core\Salsa20.Core.csproj", "{0E5BEB79-BA74-4444-B7B3-724638236D12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{F7E2B6F8-F534-4911-9FF2-09BD1DC74123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Core.Testing", "Salsa20.Core.Testing\Salsa20.Core.Testing.csproj", "{79E34849-734B-4E63-8505-A481E517D77C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E5BEB79-BA74-4444-B7B3-724638236D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E5BEB79-BA74-4444-B7B3-724638236D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E5BEB79-BA74-4444-B7B3-724638236D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E5BEB79-BA74-4444-B7B3-724638236D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79E34849-734B-4E63-8505-A481E517D77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E34849-734B-4E63-8505-A481E517D77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E34849-734B-4E63-8505-A481E517D77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E34849-734B-4E63-8505-A481E517D77C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79E34849-734B-4E63-8505-A481E517D77C} = {F7E2B6F8-F534-4911-9FF2-09BD1DC74123}
+	EndGlobalSection
+EndGlobal

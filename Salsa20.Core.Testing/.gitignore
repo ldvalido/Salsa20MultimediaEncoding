@@ -1,0 +1,3 @@
+*.Core.Testing.csproj.user
+/bin/
+/obj/
