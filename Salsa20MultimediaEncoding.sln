@@ -9,10 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{F7E2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Core.Testing", "Salsa20.Core.Testing\Salsa20.Core.Testing.csproj", "{79E34849-734B-4E63-8505-A481E517D77C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Stream", "Salsa20.Stream\Salsa20.Stream.csproj", "{6D20A91F-8D4A-4DCD-B285-1F2E319B56BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Stream.Testing", "Salsa20.Stream.Testing\Salsa20.Stream.Testing.csproj", "{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salsa20.Stream.Console", "Salsa20.Stream.Console\Salsa20.Stream.Console.csproj", "{E8B7C1E4-C4EE-4D17-B9C0-458758F28C40}"
 EndProject
 Global
@@ -29,14 +25,6 @@ Global
 		{79E34849-734B-4E63-8505-A481E517D77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79E34849-734B-4E63-8505-A481E517D77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79E34849-734B-4E63-8505-A481E517D77C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D20A91F-8D4A-4DCD-B285-1F2E319B56BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D20A91F-8D4A-4DCD-B285-1F2E319B56BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D20A91F-8D4A-4DCD-B285-1F2E319B56BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D20A91F-8D4A-4DCD-B285-1F2E319B56BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8B7C1E4-C4EE-4D17-B9C0-458758F28C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8B7C1E4-C4EE-4D17-B9C0-458758F28C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8B7C1E4-C4EE-4D17-B9C0-458758F28C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +35,5 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{79E34849-734B-4E63-8505-A481E517D77C} = {F7E2B6F8-F534-4911-9FF2-09BD1DC74123}
-		{7999A9E1-8323-4BFB-AC93-2F7DF3FF276D} = {F7E2B6F8-F534-4911-9FF2-09BD1DC74123}
 	EndGlobalSection
 EndGlobal

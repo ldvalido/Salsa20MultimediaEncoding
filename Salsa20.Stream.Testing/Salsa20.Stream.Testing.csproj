@@ -42,12 +42,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Salsa20.Stream\Salsa20.Stream.csproj">
-      <Project>{6d20a91f-8d4a-4dcd-b285-1f2e319b56be}</Project>
-      <Name>Salsa20.Stream</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
