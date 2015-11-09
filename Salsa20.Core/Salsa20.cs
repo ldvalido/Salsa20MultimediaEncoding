@@ -9,9 +9,7 @@
  */
 
 using System;
-using System.Diagnostics;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace Salsa20.Core
 {
