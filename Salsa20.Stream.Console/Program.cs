@@ -64,6 +64,7 @@ namespace Salsa20.Stream.Console
 
         static void DoOperation(Operation operation)
         {
+            System.Console.WriteLine("Starting Operation");
             if (operation.Overwrite)
             {
                 File.Delete(operation.TargetFile);
@@ -105,7 +106,7 @@ namespace Salsa20.Stream.Console
 
             //Release resources held by TripleDes Encryptor
             File.WriteAllBytes(operation.TargetFile, resultArray);
-
+            System.Console.WriteLine("Ending Operation");
             System.Console.WriteLine("Operation Completed Succesfully");
             
         }
