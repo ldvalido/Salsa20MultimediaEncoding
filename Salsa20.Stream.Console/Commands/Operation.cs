@@ -8,6 +8,7 @@ namespace Salsa20.Stream.Console.Commands
 {
     internal class Operation
     {
+       internal string OperationType { get; set; }
        internal bool Overwrite { get; set; }
        internal string SourceFile { get; set; }
        internal string TargetFile { get; set; }

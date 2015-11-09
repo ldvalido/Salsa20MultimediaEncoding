@@ -20,7 +20,7 @@ namespace Salsa20.Stream.Console.Commands
             HelpText = "Indicate if a file must be rewrriten when is encrypted")]
         public bool OverWrite { get; set; }
 
-        [Option('r',"Rounds",Required=true,HelpText = "Indicate number of rounds to encrypt the password")]
+        [Option('r',"Rounds",Required=false,HelpText = "Indicate number of rounds to encrypt the password",DefaultValue = 20)]
         public int Rounds { get; set; }
 
         [Option('k', "Key", Required = false,
@@ -29,14 +29,14 @@ namespace Salsa20.Stream.Console.Commands
             )]
         public string Key { get; set; }
 
-        [Option('k',"Key",Required=false,HelpText = "Indicates the vector to encrypt to process the file. Otherwise the key loaded in the configuration file will be used")]
+        [Option('v',"Vector",Required=false,HelpText = "Indicates the vector to encrypt to process the file. Otherwise the key loaded in the configuration file will be used")]
         public string IV { get; set; }
 
         [HelpOption]
         public string GetUsage()
         {
             return HelpText.AutoBuild(this,
-              (HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));
+              (current) => HelpText.DefaultParsingErrorsHandler(this, current));
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using Salsa20.Stream.Console.Commands;
 
@@ -9,41 +11,58 @@ namespace Salsa20.Stream.Console
     {
         private static void Main(string[] args)
         {
+
             try
             {
                 var options = new CommandOptions();
-                
+                var operation = new Operation();
+
                 if (CommandLine.Parser.Default.ParseArguments(args, options))
                 {
                     DoValidation(options);
-                    var operation = new Operation();
+                    
 
-                    if (string.IsNullOrWhiteSpace(options.Key))
+                    if (string.IsNullOrEmpty(options.Key)|| options.Key.Length != 32)
+                    {
+                        System.Console.WriteLine("A Random key will be used");
+                    }
+                    else
                     {
                         operation.Key = Encoding.UTF8.GetBytes(options.Key);
                     }
 
-                    if (!string.IsNullOrWhiteSpace(options.IV))
+                    if (string.IsNullOrEmpty(options.IV) || options.IV.Length != 8)
                     {
-                        operation.IV = Encoding.UTF8.GetBytes(options.IV); 
+                        System.Console.WriteLine("A random initialization vector will be used");
                     }
-
+                    else
+                    {
+                        operation.IV = Encoding.UTF8.GetBytes(options.IV);
+                    }
+                    
                     operation.SourceFile = options.SourceFile;
                     operation.TargetFile = options.TargetFile;
                     operation.Rounds = options.Rounds;
-                    operation.Overwrite = operation.Overwrite;
+                    operation.Overwrite = options.OverWrite;
+                    operation.OperationType = options.Operation;
 
-                    Encrypt(operation);
+                    System.Console.WriteLine($"Source File: {operation.SourceFile}");
+                    System.Console.WriteLine($"Target File: {operation.TargetFile}");
+                    System.Console.WriteLine($"Number of Round: {operation.Rounds}");
+                    System.Console.WriteLine($"Overwritting: {operation.Overwrite}");
+                    System.Console.WriteLine($"Operation Type: {operation.OperationType}");
+                    System.Console.WriteLine($"Key Used: {Encoding.UTF8.GetString(operation.Key)}");
+                    System.Console.WriteLine($"Vector Used: {Encoding.UTF8.GetString(operation.IV)}");
+                    DoOperation(operation);
                 }
             }
             catch (Exception ex)
             {
                 System.Console.WriteLine(ex.Message);
             }
-            System.Console.ReadLine();
         }
 
-        static void Encrypt(Operation operation)
+        static void DoOperation(Operation operation)
         {
             if (operation.Overwrite)
             {
@@ -51,7 +70,7 @@ namespace Salsa20.Stream.Console
             }
 
             var encryptor = new Core.Salsa20();
-            if (operation.IV.Length == 0)
+            if (operation.IV == null)
             {
                 encryptor.GenerateIV();
             }
@@ -60,7 +79,7 @@ namespace Salsa20.Stream.Console
                 encryptor.IV = operation.IV;
             }
 
-            if (operation.Key.Length == 0)
+            if (operation.Key == null)
             {
                 encryptor.GenerateKey();
             }
@@ -69,7 +88,15 @@ namespace Salsa20.Stream.Console
                 encryptor.Key = operation.Key;
             }
 
-            var cryptoTransform = encryptor.CreateDecryptor(encryptor.Key, encryptor.IV);
+            ICryptoTransform cryptoTransform = null;
+
+            var dictOperations = new Dictionary<string, Action>
+                    {
+                        {"encrypt", () => cryptoTransform = encryptor.CreateEncryptor(encryptor.Key,encryptor.IV)},
+                        {"decrypt", () => cryptoTransform = encryptor.CreateDecryptor(encryptor.Key,encryptor.IV)},
+                    };
+            
+            dictOperations[operation.OperationType.ToLowerInvariant()].Invoke();
 
             var sourceFile = File.ReadAllBytes(operation.SourceFile);
 
@@ -78,6 +105,9 @@ namespace Salsa20.Stream.Console
 
             //Release resources held by TripleDes Encryptor
             File.WriteAllBytes(operation.TargetFile, resultArray);
+
+            System.Console.WriteLine("Operation Completed Succesfully");
+            
         }
 
         private static void DoValidation(CommandOptions options)
