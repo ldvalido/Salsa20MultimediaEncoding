@@ -1,22 +1,9 @@
-﻿/*
- * This implementation of Salsa20 is ported from the reference implementation
- * by D. J. Bernstein, which can be found at:
- *   http://cr.yp.to/snuffle/salsa20/ref/salsa20.c
- *
- * This work is hereby released into the Public Domain. To view a copy of the public domain dedication,
- * visit http://creativecommons.org/licenses/publicdomain/ or send a letter to
- * Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
- */
-
+﻿
 using System;
 using System.Security.Cryptography;
 
 namespace Salsa20.Core
 {
-    /// <summary>
-    /// Implements the Salsa20 stream encryption cipher, as defined at http://cr.yp.to/snuffle.html.
-    /// </summary>
-    /// <remarks>See <a href="http://code.logos.com/blog/2008/06/salsa20_implementation_in_c_1.html">Salsa20 Implementation in C#</a>.</remarks>
     public sealed class Salsa20 : SymmetricAlgorithm
     {
         /// <summary>
