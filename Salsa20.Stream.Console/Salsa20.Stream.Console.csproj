@@ -49,6 +49,9 @@
   <ItemGroup>
     <Compile Include="Commands\CommandOptions.cs" />
     <Compile Include="Commands\Operation.cs" />
+    <Compile Include="ImageFormat\BmpImageFormat.cs" />
+    <Compile Include="ImageFormat\IImageFormat.cs" />
+    <Compile Include="ImageFormat\ImageEncryptionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

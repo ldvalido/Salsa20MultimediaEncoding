@@ -4,6 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using Salsa20.Stream.Console.Commands;
+using Salsa20.Stream.Console.ImageFormat;
 
 namespace Salsa20.Stream.Console
 {
@@ -71,6 +72,7 @@ namespace Salsa20.Stream.Console
             }
 
             var encryptor = new Core.Salsa20();
+
             if (operation.IV == null)
             {
                 encryptor.GenerateIV();
@@ -88,24 +90,25 @@ namespace Salsa20.Stream.Console
             {
                 encryptor.Key = operation.Key;
             }
-
-            ICryptoTransform cryptoTransform = null;
-
+            operation.SymmetricAlgorithm = encryptor;
+            
+            var imageMgr = new ImageEncryptionManager();
+            
             var dictOperations = new Dictionary<string, Action>
                     {
-                        {"encrypt", () => cryptoTransform = encryptor.CreateEncryptor(encryptor.Key,encryptor.IV)},
-                        {"decrypt", () => cryptoTransform = encryptor.CreateDecryptor(encryptor.Key,encryptor.IV)},
+                        {"encrypt", () =>  imageMgr.Encrypt(operation) },
+                        {"decrypt", () =>  imageMgr.Decrypt(operation)},
                     };
-            
-            dictOperations[operation.OperationType.ToLowerInvariant()].Invoke();
 
-            var sourceFile = File.ReadAllBytes(operation.SourceFile);
+            if (imageMgr.CanProcess(operation))
+            {
+                dictOperations[operation.OperationType.ToLowerInvariant()].Invoke();
+            }
+            else
+            {
+                throw new ArgumentException($"The format of file {operation.SourceFile} is not allowed");
+            }
 
-            //transform the specified region of bytes array to resultArray
-            var resultArray = cryptoTransform.TransformFinalBlock(sourceFile, 0, sourceFile.Length);
-
-            //Release resources held by TripleDes Encryptor
-            File.WriteAllBytes(operation.TargetFile, resultArray);
             System.Console.WriteLine("Ending Operation");
             System.Console.WriteLine("Operation Completed Succesfully");
             

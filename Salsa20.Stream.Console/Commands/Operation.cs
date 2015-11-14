@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,5 +16,6 @@ namespace Salsa20.Stream.Console.Commands
        internal byte[] Key { get; set; }
        internal byte[] IV { get; set; }
        internal int Rounds { get; set; }
+       internal SymmetricAlgorithm SymmetricAlgorithm { get; set; }
     }
 }
