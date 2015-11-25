@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
 using System.Text;
 using Salsa20.Stream.Console.Commands;
 using Salsa20.Stream.Console.ImageFormat;
